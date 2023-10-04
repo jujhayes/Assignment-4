@@ -1,0 +1,46 @@
+---
+title: "Assignment 4- Alekhya Chaparala, Juliet Hayes, Kieran Connolly, "
+format: pdf
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(readr)
+library(ggplot2)
+
+hate_crimes <- read_csv("/Users/Juj/Desktop/hate_crimes.csv") 
+  
+hate_crimes %>%
+  ggplot(mapping = aes(x= share_non_white, y = gini_index)) +
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_light() +
+  labs(
+    y = "State's Gini Index",
+    x = "State's Share of Non-White Population",
+    caption ="Majumder, M. 2017. 'Higher Rates Of Hate Crimes Are Tied To Income Inequality'. FiveThirtyEight.",
+    title = "Whiter States Tend to Have Lower Levels of Income Inequality")+ 
+  theme(
+        axis.text=element_text(size=8, color = "blue",
+                               hjust = 0.5), 
+        plot.title=element_text(size=10, face = "bold"),
+        axis.title=element_text(size=9),
+        plot.caption = element_text(size = 6, face = "italic")
+      )
+
+
+median_crimes <- median(hate_crimes$hate_crimes_per_100k_splc, na.rm = TRUE)
+  median_crimes
+  
+min(hate_crimes_per_100k_splc)
+max(hate_crimes_per_100k_splc)
+  
+```
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
